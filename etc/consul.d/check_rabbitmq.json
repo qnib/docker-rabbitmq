@@ -1,0 +1,13 @@
+{
+  "service": {
+    "name": "rabbitmq",
+    "port": 5672,
+    "checks": [{
+            "script": "curl -s -u guest:guest http://localhost:15672/api/overview|jq '.contexts[0].port'|grep 15672",
+            "interval": "10s"
+    },{
+            "script": "curl -s -u guest:guest http://localhost:15672/api/overview|jq '.contexts[1].port'|grep 55672",
+            "interval": "10s"
+        }]
+  }
+}
