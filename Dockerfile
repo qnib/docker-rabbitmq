@@ -3,7 +3,7 @@ MAINTAINER "Christian Kniep <christian@qnib.org>"
 
 RUN rpm --import http://www.rabbitmq.com/rabbitmq-signing-key-public.asc
 RUN yum install -y rabbitmq-server jq
-ADD etc/consul.d/check_rabbitmq.json /etc/consul.d/
+ADD etc/consul.d/rabbitmq.json /etc/consul.d/
 ADD etc/supervisord.d/rabbitmq.ini /etc/supervisord.d/
 RUN rabbitmq-plugins enable rabbitmq_management
 
