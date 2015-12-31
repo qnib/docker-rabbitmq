@@ -1,0 +1,24 @@
+consul:
+    image: qnib/consul
+    hostname: consul
+    container_name: consul
+    dns: 127.0.0.1
+    environment:
+    - DC_NAME=dc1
+    - CONSUL_BOOTSTRAP=true
+    ports:
+    - "8500:8500"
+
+rabbitmq:
+  image: qnib/rabbitmq
+  ports:
+   - "55672:55672"
+   - "15672:15672"
+   - "5672:5672"
+  dns: 127.0.0.1
+  hostname: rabbitmq
+  container_name: rabbitmq
+  links:
+  - consul:consul
+  privileged: true
+
